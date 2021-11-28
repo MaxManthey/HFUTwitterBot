@@ -15,5 +15,9 @@
   "bugs": {
     "url": "https://github.com/MaxManthey/HFUTwitterBot/issues"
   },
-  "homepage": "https://github.com/MaxManthey/HFUTwitterBot#readme"
+  "homepage": "https://github.com/MaxManthey/HFUTwitterBot#readme",
+  "dependencies": {
+    "axios": "^0.24.0",
+    "oauth-1.0a": "^2.2.6"
+  }
 }
