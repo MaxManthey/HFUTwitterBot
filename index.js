@@ -1,4 +1,6 @@
 //twitterbot script
+var keys = require("./keys.json");
+
 /*
  * This pre-request script retrieves a Bearer token from the client credentials
  * you provide in your environment file.
@@ -15,8 +17,8 @@ const addToken = () => {
         auth: {
             type: 'basic',
             basic: {
-                username: env_variables.consumer_key,
-                password: env_variables.consumer_secret
+                username: keys.consumer_key,
+                password: keys.consumer_secret
             }
         },
         headers: {
@@ -31,7 +33,7 @@ const addToken = () => {
             console.error('Error while generating a bearer token:', err);
         } else {
             const {access_token} = res.json();
-            env_variables.bearer_token = access_token;
+            keys.bearer_token = access_token;
             pm.environment.set('bearer_token', access_token);
         }
     });
@@ -47,7 +49,7 @@ const prepareBearerToken = () => {
     }
     
     // Use an existing Bearer token, if already provided
-    if (typeof env_variables.bearer_token === 'undefined' || env_variables.bearer_token === '' || env_variables.bearer_token === null || env_variables.bearer_token.toLowerCase() === 'your bearer token') {
+    if (typeof keys.bearer_token === 'undefined' || keys.bearer_token === '' || keys.bearer_token === null || keys.bearer_token.toLowerCase() === 'your bearer token') {
         addToken();
     }
 }
