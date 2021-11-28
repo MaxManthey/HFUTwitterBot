@@ -18,6 +18,7 @@
   "homepage": "https://github.com/MaxManthey/HFUTwitterBot#readme",
   "dependencies": {
     "axios": "^0.24.0",
-    "oauth-1.0a": "^2.2.6"
+    "oauth-1.0a": "^2.2.6",
+    "prompt-sync": "^4.2.0"
   }
 }

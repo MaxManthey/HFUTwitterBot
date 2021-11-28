@@ -1,25 +1,28 @@
-//import Oauth1Helper from "./OauthHelper";
 const Oauth1Helper = require('./OauthHelper.js')
 const axios = require('axios')
+var prompt = require('prompt-sync')();
 
-const request = {
-    url: 'https://api.twitter.com/2/tweets',
-    method: 'POST',
-    body: {
-        "text": "Script Test2"
-    }
-};
+function postTweet(tweet) {
+    const request = {
+        url: 'https://api.twitter.com/2/tweets',
+        method: 'POST',
+        body: {
+            "text": tweet
+        }
+    };
 
-const authHeader = Oauth1Helper.getAuthHeaderForRequest(request);
-// console.log(authHeader)
+    const authHeader = Oauth1Helper.getAuthHeaderForRequest(request);
 
-
-async function postTweet() {
-    return await axios.post(
+    return axios.post(
         request.url,
         request.body,
         { headers: authHeader }
-    );
+    )
 }
 
-postTweet()
+function main() {
+    var tweet = prompt('What would you like to tweet? ');
+    postTweet(tweet)
+}
+
+main()
